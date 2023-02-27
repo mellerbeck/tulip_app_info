@@ -26,6 +26,5 @@ CREATE TABLE tulipappstructure.tulip_info_details (
 	direct_link varchar(1000) NULL,
 	created_at timestamptz NULL,
 	CONSTRAINT tulip_info_details_pk PRIMARY KEY (persistent_id, process_id, function_id, trigger_id),
-	CONSTRAINT unique_query_function UNIQUE (process_id, function_id, trigger_id),
-	CONSTRAINT tulipinfodetails_fkey FOREIGN KEY (persistent_id,process_id) REFERENCES tulipappstructure.tulip_info_header_2(persistent_id,process_id)
+	CONSTRAINT tulipinfodetails_fkey FOREIGN KEY (persistent_id,process_id) REFERENCES tulipappstructure.tulip_info_header(persistent_id,process_id)
 );
