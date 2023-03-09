@@ -1,3 +1,4 @@
+
 CREATE TABLE tulipappstructure.tulip_info_header (
 	app_id varchar(50) NOT NULL,
 	persistent_id varchar(50) NOT NULL,
@@ -5,10 +6,9 @@ CREATE TABLE tulipappstructure.tulip_info_header (
 	"name" varchar(250) NOT NULL,
 	group_id varchar(50) NOT NULL,
 	group_name varchar(250) NOT NULL,
-	instance_path varchar(250) NOT NULL,
+	app_path varchar(500) NOT NULL,
 	created_at timestamptz NOT NULL,
-	new_column varchar(100) NULL,
-	CONSTRAINT tulip_info_header_pk PRIMARY KEY (persistent_id, process_id)
+	CONSTRAINT tulipinfoheader_pkey PRIMARY KEY (persistent_id, process_id)
 );
 
 CREATE TABLE tulipappstructure.tulip_info_details (
