@@ -89,12 +89,14 @@ def process_tulip_app(file_path):
     tulip_info_header = df_process.merge(api_data, left_on='app_id', right_on='persistent_id', how='left')
     tulip_info_header.rename(columns={'persistent_id_x':'persistent_id'}, inplace = True)
         
-    # Column instance_path
-    tulip_info_header['instance_path'] = "https://" + customer_origin + ".tulip.co/w/1/groups/"
+    # Column app_path
+    tulip_info_header['app_path'] = "https://" + customer_origin + ".tulip.co/w/1/process/"
+    tulip_info_header['app_path'] = tulip_info_header.app_path.str.cat(tulip_info_header.process_id)
+    tulip_info_header['app_path'] = tulip_info_header['app_path'] + "/steps/"
         
     # Final tulip_info_header Dataframe
     tulip_info_header = tulip_info_header[['app_id', 'persistent_id', 'process_id', 'name', 'group_id', 'group_name', 
-                                               'instance_path', 'created_at']]        
+                                               'app_path', 'created_at']]        
 
     # Data Extarction - Connector > Function Related Data
     df_connectors = pd.json_normalize(data, record_path=['connectors', 'functions'])
